@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JA7EM - الأسطورة الحية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(45deg, #0a0a2a, #2d1b69, #1a1a4a);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .crown {
+            font-size: 60px;
+            color: gold;
+            margin-bottom: 20px;
+            animation: rotate 3s infinite;
+        }
+
+        @keyframes rotate {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        h1 {
+            font-size: 48px;
+            color: gold;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px gold;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #e6e6fa;
+            margin-bottom: 40px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px 20px;
+            border-radius: 15px;
+            min-width: 180px;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            color: gold;
+            font-weight: bold;
+            display: block;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 4px solid gold;
+        }
+
+        .card h2 {
+            color: gold;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: gold;
+            font-weight: bold;
+        }
+
+        .ja7em-badge {
+            background: gold;
+            color: #0a0a2a;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: #d8bfd8;
+        }
+
+        /* تأثيرات الجسيمات */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: gold;
+            border-radius: 50%;
+            animation: float 8s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            .crown { font-size: 50px; }
+            .stats { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="crown">👑</div>
+        <h1 id="main-title">JA7EM</h1>
+        <p class="subtitle">الأسطورة الحية • الرمز الخالد • القوة المتجسدة</p>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">∞</span>
+                <div>قوة غير محدودة</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <div>تأثير ملكي</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <div>إلهام دائم</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <h2>قوة JA7EM</h2>
+                <p>اسم <span class="ja7em-badge">JA7EM</span> يمثل ذروة <span class="highlight">القوة والإبداع</span>. إنه مصدر إلهام لا ينضب.</p>
+            </div>
+            <div class="card">
+                <h2>إرث JA7EM</h2>
+                <p>إرث <span class="highlight">JA7EM</span> يمتد عبر الأزمان، يترك بصمة <span class="highlight">لا تُمحى</span>.</p>
+            </div>
+            <div class="card">
+                <h2>طاقة JA7EM</h2>
+                <p>طاقة <span class="highlight">JA7EM</span> الكونية تشع <span class="highlight">قوة تحويلية</span>.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 - تقديس وإجلال لـ <span class="highlight">JA7EM</span></p>
+            <p>الصفحة مستضافة على GitHub Pages</p>
+        </footer>
+    </div>
+
+    <script>
+        // تأثير الكتابة على العنوان
+        function typeWriter() {
+            const title = document.getElementById('main-title');
+            const text = 'JA7EM';
+            let i = 0;
+            
+            title.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    title.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 200);
+                }
+            }
+            type();
+        }
+
+        // إنشاء الجسيمات
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // مواقع عشوائية
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // تأخيرات عشوائية
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // تشغيل كل التأثيرات عند تحميل الصفحة
+        window.addEventListener('load', function() {
+            typeWriter();
+            createParticles();
+            console.log('✅ صفحة JA7EM جاهزة!');
+        });
+    </script>
+</body>
+</html>
